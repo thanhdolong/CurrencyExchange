@@ -6,10 +6,13 @@
 //  Copyright © 2019 Thành Đỗ Long. All rights reserved.
 //
 
+import Swinject
+
 protocol Coordinator: class {
     
     var children: [Coordinator] { get set }
     var router: Router { get }
+    var container: Container { get }
     
     func present(animated: Bool, onDismissed: (() -> Void)?)
     func dismiss(animated: Bool)

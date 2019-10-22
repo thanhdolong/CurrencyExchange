@@ -1,0 +1,202 @@
+[
+    {
+        "symbol" : "Af",
+        "name" : "Afghan Afghani",
+        "symbol_native" : "؋",
+        "decimal_digits" : 0,
+        "rounding" : 0,
+        "code" : "AFN",
+        "name_plural" : "Afghan Afghanis",
+        "flag" : "https://cdn.countryflags.com/thumbs/afghanistan/flag-square-500.png"
+	},
+    {
+        "symbol" : "AU$",
+        "name" : "Australian Dollar",
+        "symbol_native" : "$",
+        "decimal_digits" : 2,
+        "rounding" : 0,
+        "code" : "AUD",
+        "name_plural" : "Australian dollars",
+        "flag" : "https://cdn.countryflags.com/thumbs/australia/flag-square-500.png"
+	},
+    {
+	    "symbol" : "R$",
+	    "name" : "Brazilian Real",
+	    "symbol_native" : "R$",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "BRL",
+	    "name_plural" : "Brazilian reals",
+        "flag" : "https://cdn.countryflags.com/thumbs/brazil/flag-square-500.png"
+	},
+    {
+        "symbol" : "£",
+        "name" : "British Pound Sterling",
+	    "symbol_native" : "£",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "GBP",
+	    "name_plural" : "British pounds sterling",
+        "flag" : "https://cdn.countryflags.com/thumbs/united-kingdom/flag-square-500.png"
+	},
+    {
+	    "symbol" : "CA$",
+	    "name" : "Canadian Dollar",
+	    "symbol_native" : "$",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "CAD",
+	    "name_plural" : "Canadian dollars",
+        "flag" : "https://cdn.countryflags.com/thumbs/canada/flag-square-500.png"
+	},
+    {
+	    "symbol" : "CN¥",
+	    "name" : "Chinese Yuan",
+	    "symbol_native" : "CN¥",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "CNY",
+	    "name_plural" : "Chinese yuan",
+        "flag" : "https://cdn.countryflags.com/thumbs/china/flag-square-500.png"
+	},
+    {
+	    "symbol" : "CO$",
+	    "name" : "Colombian Peso",
+	    "symbol_native" : "$",
+	    "decimal_digits" : 0,
+	    "rounding" : 0,
+	    "code" : "COP",
+	    "name_plural" : "Colombian pesos",
+        "flag" : "https://cdn.countryflags.com/thumbs/colombia/flag-square-500.png"
+	},
+    {
+	    "symbol" : "Kč",
+	    "name" : "Czech Republic Koruna",
+	    "symbol_native" : "Kč",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "CZK",
+	    "name_plural" : "Czech Republic korunas",
+        "flag" : "https://cdn.countryflags.com/thumbs/czech-republic/flag-square-500.png"
+	},
+    {
+	    "symbol" : "Dkr",
+	    "name" : "Danish Krone",
+	    "symbol_native" : "kr",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "DKK",
+	    "name_plural" : "Danish kroner",
+        "flag" : "https://cdn.countryflags.com/thumbs/denmark/flag-square-500.png"
+	},
+    {
+	    "symbol" : "€",
+	    "name" : "Euro",
+	    "symbol_native" : "€",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "EUR",
+	    "name_plural" : "euros",
+        "flag" : "https://cdn.countryflags.com/thumbs/european-union/flag-square-500.png"
+	},
+    {
+	    "symbol" : "¥",
+	    "name" : "Japanese Yen",
+	    "symbol_native" : "￥",
+	    "decimal_digits" : 0,
+	    "rounding" : 0,
+	    "code" : "JPY",
+	    "name_plural" : "Japanese yen",
+        "flag" : "https://cdn.countryflags.com/thumbs/japan/flag-square-500.png"
+	},
+    {
+	    "symbol" : "Nkr",
+	    "name" : "Norwegian Krone",
+	    "symbol_native" : "kr",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "NOK",
+	    "name_plural" : "Norwegian kroner",
+        "flag" : "https://cdn.countryflags.com/thumbs/norway/flag-square-500.png"
+	},
+    {
+        "symbol" : "zł",
+	    "name" : "Polish Zloty",
+	    "symbol_native" : "zł",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "PLN",
+	    "name_plural" : "Polish zlotys",
+        "flag" : "https://cdn.countryflags.com/thumbs/poland/flag-square-500.png"
+	},
+    {
+	    "symbol" : "RUB",
+	    "name" : "Russian Ruble",
+	    "symbol_native" : "руб.",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "RUB",
+	    "name_plural" : "Russian rubles",
+        "flag" : "https://cdn.countryflags.com/thumbs/russia/flag-square-500.png"
+	},
+    {
+	    "symbol" : "Skr",
+	    "name" : "Swedish Krona",
+	    "symbol_native" : "kr",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "SEK",
+	    "name_plural" : "Swedish kronor",
+        "flag" : "https://cdn.countryflags.com/thumbs/sweden/flag-square-500.png"
+	},
+    {
+	    "symbol" : "CHF",
+	    "name" : "Swiss Franc",
+	    "symbol_native" : "CHF",
+	    "decimal_digits" : 2,
+	    "rounding" : 0.05,
+	    "code" : "CHF",
+	    "name_plural" : "Swiss francs",
+        "flag" : "https://cdn.countryflags.com/thumbs/switzerland/flag-square-500.png"
+	},
+    {
+	    "symbol" : "AED",
+	    "name" : "United Arab Emirates Dirham",
+	    "symbol_native" : "د.إ.‏",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "AED",
+	    "name_plural" : "UAE dirhams",
+        "flag" : "https://cdn.countryflags.com/thumbs/united-arab-emirates/flag-square-500.png"
+	},
+    {
+        "symbol" : "$",
+        "name" : "US Dollar",
+        "symbol_native" : "$",
+        "decimal_digits" : 2,
+        "rounding" : 0,
+        "code" : "USD",
+        "name_plural" : "US dollars",
+        "flag" : "https://cdn.countryflags.com/thumbs/united-states-of-america/flag-square-500.png"
+    },
+    {
+	    "symbol" : "$U",
+	    "name" : "Uruguayan Peso",
+	    "symbol_native" : "$",
+	    "decimal_digits" : 2,
+	    "rounding" : 0,
+	    "code" : "UYU",
+	    "name_plural" : "Uruguayan pesos",
+        "flag" : "https://cdn.countryflags.com/thumbs/uruguay/flag-square-500.png"
+	},
+    {
+	    "symbol" : "₫",
+	    "name" : "Vietnamese Dong",
+	    "symbol_native" : "₫",
+	    "decimal_digits" : 0,
+	    "rounding" : 0,
+	    "code" : "VND",
+	    "name_plural" : "Vietnamese dong",
+        "flag" : "https://cdn.countryflags.com/thumbs/vietnam/flag-square-500.png"
+	}
+]

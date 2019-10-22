@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 protocol CurrencyService: class {
-    func getRates(result: @escaping (Result<[Currency], AFError>) -> Void)
+    typealias FixerResult = Result<FixerLatestRatesResponse, AFError>
+    func getRates(result: @escaping (FixerResult) -> Void)
 }
 
 final class CurrencyServiceImpl: CurrencyService {
@@ -20,11 +21,14 @@ final class CurrencyServiceImpl: CurrencyService {
         self.networking = networking
     }
     
-    func getRates(result: @escaping (Result<[Currency], AFError>) -> Void) {
-        networking.fetchDecodable(route: FixerRoute.latest, decoder: JSONDecoder()) { (response: Result<FixerLatestResponse, AFError>) in
+    func getRates(result: @escaping (FixerResult) -> Void) {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        
+        networking.fetchDecodable(route: FixerRoute.latest, decoder: decoder) { (response: FixerResult) in
             switch response {
             case .success(let values):
-                print(values)
+                result(.success(values))
             case .failure(let error):
                 result(.failure(error))
             }

@@ -26,21 +26,6 @@ final class HomeCoordinator: Coordinator {
         let viewController = container.resolve(HomeViewController.self)!
         router.present(viewController, animated: animated, onDismissed: onDismissed)
     }
-    
-    func loadCurrencyJson(filename fileName: String) -> [Currency]? {
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let jsonData = try decoder.decode(Array<Currency>.self, from: data)
-                return jsonData
-            } catch {
-                print("error:\(error)")
-            }
-        }
-        return nil
-    }
 }
 
 

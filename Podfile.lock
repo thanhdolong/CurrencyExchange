@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.0.0-rc.2)
+  - Nimble (8.0.4)
+  - Quick (2.2.0)
+  - SwiftLint (0.35.0)
+  - Swinject (2.7.1)
+
+DEPENDENCIES:
+  - Alamofire (= 5.0.0-rc.2)
+  - Nimble (~> 8.0)
+  - Quick (~> 2.2)
+  - SwiftLint (= 0.35)
+  - Swinject (~> 2.7)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Nimble
+    - Quick
+    - SwiftLint
+    - Swinject
+
+SPEC CHECKSUMS:
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+
+PODFILE CHECKSUM: d80e515bddb6532ac6ca754a4ee1df7d1e81be50
+
+COCOAPODS: 1.8.3

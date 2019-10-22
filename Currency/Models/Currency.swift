@@ -16,6 +16,5 @@ struct Currency: Decodable {
     let rounding: Double
     let code: String
     let namePlural: String
-    let rate: Double?
     let flag: URL
 }

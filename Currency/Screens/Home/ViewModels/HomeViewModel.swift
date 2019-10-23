@@ -16,9 +16,14 @@ protocol HomeViewModelDelegate: class {
 
 final class HomeViewModel {
     private var currencies: [Currency] = []
+    private var filteredCurrencies: [Currency] = [] {
+        didSet {
+            delegate?.didRecieveDataUpdate()
+        }
+    }
     private var date: Date?
     private var base: String?
-    private var rates: [String:Double] = [:]
+    private var rates: Rates = Rates()
     
     private let currencyService: CurrencyService
     public weak var delegate: HomeViewModelDelegate?
@@ -31,21 +36,40 @@ final class HomeViewModel {
         return currencies
     }
     
+    public var isFiltering: Bool {
+        guard let query = query else { return false }
+        return query.isEmpty ? false : true
+    }
+    
+    public var query: String? {
+        didSet {
+            guard let query = query, query.isEmpty == false else {
+                filteredCurrencies = []
+                return
+            }
+            
+            let result = currencies.filter({ (currency) -> Bool in
+                return currency.name.lowercased().contains(query.lowercased())
+            })
+            
+            self.filteredCurrencies = result
+        }
+    }
+    
     public var numberOfRowsInSection: Int {
-        return currencies.count
+        return isFiltering ? filteredCurrencies.count : currencies.count
     }
     
     public func getCurrency(from index: Int) -> Currency {
-        return currencies[index]
+        return isFiltering ? filteredCurrencies[index] : currencies[index]
     }
     
     public func downloadData() {
-        self.currencies = loadJson(filename: "currencies")
-        
         currencyService.getRates { result in
             switch(result) {
             case .success(let response):
                 DispatchQueue.main.async {
+                    self.currencies = self.loadJson(filename: "currencies")
                     self.date = response.timestamp
                     self.rates = response.rates
                     
@@ -69,7 +93,7 @@ final class HomeViewModel {
     
     private func currencyConvert(code: String) {
         guard let basePrice = rates[code] else {
-            delegate?.didRecieveError(error: "Something during converting went wrong.")
+            delegate?.didRecieveError(error: "The currency cannot be converted.")
             return
         }
         
@@ -101,6 +125,9 @@ final class HomeViewModel {
     public func configureCell(_ view: CurrencyRateCell, for indexPath: IndexPath) {
         let currency = getCurrency(from: indexPath.row)
         guard let rates = rates[currency.code] else { return }
+        
+        if self.base == currency.code { view.isSelected = true
+        } else { view.isSelected = false }
         
         view.currencyLabel.text = currency.name
         view.rateLabel.text = String(format: "%.\(currency.decimalDigits)f", rates)

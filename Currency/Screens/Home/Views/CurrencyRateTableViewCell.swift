@@ -13,19 +13,24 @@ protocol CurrencyRateCell: class {
     var currencyLabel: UILabel! { get }
     var rateLabel: UILabel! { get }
     var symbolLabel: UILabel! { get }
+    var isSelected: Bool { get set }
 }
 
 class CurrencyRateTableViewCell: UITableViewCell, CurrencyRateCell, ReusableView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                currencyLabel.textColor = .red
+            } else {
+                currencyLabel.textColor = .black
+            }
+        }
     }
     
     @IBOutlet weak var flagImage: UIImageView!

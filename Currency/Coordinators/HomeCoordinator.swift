@@ -24,7 +24,8 @@ final class HomeCoordinator: Coordinator {
     // MARK: - Instance Methods
     public func present(animated: Bool, onDismissed: (() -> Void)?) {
         let viewController = container.resolve(HomeViewController.self)!
-        router.present(viewController, animated: animated, onDismissed: onDismissed)
+        let viewControllerEmbedIn = UINavigationController(rootViewController: viewController)
+        router.present(viewControllerEmbedIn, animated: animated, onDismissed: onDismissed)
     }
 }
 

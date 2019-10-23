@@ -7,9 +7,10 @@
 //
 
 import Foundation
+typealias Rates = [String: Double]
 
 struct FixerLatestRatesResponse: Decodable {
     let timestamp: Date
     let base: String
-    let rates: [String: Double]
+    let rates: Rates
 }

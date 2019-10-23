@@ -25,7 +25,7 @@ final class CurrencyServiceImpl: CurrencyService {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
         
-        networking.fetchDecodable(route: FixerRoute.latest, decoder: decoder) { (response: FixerResult) in
+        networking.fetchDecodable(route: FixerRoute.latestRate, decoder: decoder) { (response: FixerResult) in
             switch response {
             case .success(let values):
                 result(.success(values))

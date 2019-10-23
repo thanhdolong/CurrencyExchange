@@ -27,4 +27,5 @@ final class AddCurrencyCoordinator: Coordinator {
         let viewController = container.resolve(AddCurrencyViewController.self)!
         router.present(viewController, animated: animated, onDismissed: onDismissed)
     }
+
 }

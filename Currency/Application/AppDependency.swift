@@ -30,13 +30,18 @@ final class AppDependency {
             HomeViewModel(currencyService: resolver.resolve(CurrencyService.self)!)
         }
         
+        container.register(AddCurrencyViewModel.self) { _ in
+            AddCurrencyViewModel()
+        }
+        
         // ViewControllers
         container.register(HomeViewController.self) { resolver in
             HomeViewController(homeViewModel: resolver.resolve(HomeViewModel.self)!)
         }
         
         container.register(AddCurrencyViewController.self) { resolver in
-            AddCurrencyViewController()
+            AddCurrencyViewController(addCurrencViewModel:
+                resolver.resolve(AddCurrencyViewModel.self)!)
         }
     }
 }

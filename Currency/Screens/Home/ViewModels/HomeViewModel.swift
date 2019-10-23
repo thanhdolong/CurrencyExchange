@@ -88,6 +88,7 @@ final class HomeViewModel {
     
     public func setBaseCurrency(for indexPath: IndexPath) {
         let currency = getCurrency(from: indexPath.row)
+        self.base = currency.code
         currencyConvert(code: currency.code)
     }
     
@@ -97,7 +98,6 @@ final class HomeViewModel {
             return
         }
         
-        self.base = code
         self.rates = rates.compactMapValues({ (rate) -> Double in
             return rate/basePrice
         })

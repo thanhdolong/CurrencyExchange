@@ -40,7 +40,6 @@ class HomeViewController: UIViewController {
         setupNavigationController()
         setupSearchController()
         registerCellForReuse()
-    
     }
     
     init(homeViewModel: HomeViewModel,
@@ -52,14 +51,6 @@ class HomeViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupSearchController() {
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Currency"
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        definesPresentationContext = true
     }
     
     private func setupView() {
@@ -81,16 +72,24 @@ class HomeViewController: UIViewController {
     
     private func setupNavigationController() {
         let plusCircle = UIImage(systemName: "plus.circle.fill")
-        let navigationBar = navigationController?.navigationBar
         
-        navigationBar?.topItem?.leftBarButtonItem = UIBarButtonItem(image: plusCircle, style: .plain, target: self, action: #selector(addCurrencyTapped))
-        navigationBar?.topItem?.leftBarButtonItem?.tintColor = UIColor(named: "SecondaryColor")
+        let navigationBar = navigationController?.navigationBar
         navigationBar?.prefersLargeTitles = true
-        navigationBar?.topItem?.title = "Currency"
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: plusCircle, style: .plain, target: self, action: #selector(addCurrencyTapped))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(named: "SecondaryColor")
+        navigationItem.title = "Currency"
     
         navigationItem.searchController = searchController
     }
     
+    private func setupSearchController() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+    }
     
     private func registerCellForReuse() {
         homeView.tableView.register(CurrencyRateTableViewCell.nib, forCellReuseIdentifier: CurrencyRateTableViewCell.reuseIdentifier)

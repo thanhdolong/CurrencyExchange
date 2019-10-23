@@ -9,10 +9,15 @@
 import UIKit
 import Alamofire
 
+protocol HomeViewControllerDelegate: class {
+  func homeViewControllerDidPressAddCurrency(_ viewController: HomeViewController)
+}
+
 class HomeViewController: UIViewController {
     let searchController: UISearchController
     var homeViewModel: HomeViewModel
     var homeView: HomeView! { return (view as! HomeView) }
+    weak var delegate: HomeViewControllerDelegate?
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -70,11 +75,15 @@ class HomeViewController: UIViewController {
         homeViewModel.downloadData()
     }
     
+    @objc func addCurrencyTapped(sender: UIBarButtonItem) {
+        delegate?.homeViewControllerDidPressAddCurrency(self)
+    }
+    
     private func setupNavigationController() {
         let plusCircle = UIImage(systemName: "plus.circle.fill")
         let navigationBar = navigationController?.navigationBar
         
-        navigationBar?.topItem?.leftBarButtonItem = UIBarButtonItem(image: plusCircle, style: .plain, target: nil, action: nil)
+        navigationBar?.topItem?.leftBarButtonItem = UIBarButtonItem(image: plusCircle, style: .plain, target: self, action: #selector(addCurrencyTapped))
         navigationBar?.topItem?.leftBarButtonItem?.tintColor = UIColor(named: "SecondaryColor")
         navigationBar?.prefersLargeTitles = true
         navigationBar?.topItem?.title = "Currency"

@@ -24,8 +24,17 @@ final class HomeCoordinator: Coordinator {
     // MARK: - Instance Methods
     public func present(animated: Bool, onDismissed: (() -> Void)?) {
         let viewController = container.resolve(HomeViewController.self)!
+        viewController.delegate = self
         let viewControllerEmbedIn = UINavigationController(rootViewController: viewController)
         router.present(viewControllerEmbedIn, animated: animated, onDismissed: onDismissed)
+    }
+}
+
+extension HomeCoordinator: HomeViewControllerDelegate {
+    func homeViewControllerDidPressAddCurrency(_ viewController: HomeViewController) {
+        let router = ModalNavigationRouter(parentViewController: viewController)
+        let coordinator = AddCurrencyCoordinator(router: router, container: container)
+        presentChild(coordinator, animated: true)
     }
 }
 

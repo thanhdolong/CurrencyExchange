@@ -6,6 +6,7 @@ target 'Currency' do
 
   # Pods for Currency
   pod 'Swinject', '~> 2.7'
+  pod 'SnapKit', '~> 5.0'
   pod 'Alamofire', '5.0.0-rc.2'
   pod 'SwiftLint', '0.35'
 

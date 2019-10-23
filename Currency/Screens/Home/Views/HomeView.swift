@@ -9,6 +9,6 @@
 import UIKit
 
 class HomeView: UIView {
+    var indicator: UIView?
     @IBOutlet weak var tableView: UITableView!
-    
 }

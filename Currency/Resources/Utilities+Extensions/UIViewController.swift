@@ -54,7 +54,9 @@ extension UIViewController {
         return spinnerView
     }
     
-    func removeIndicator(indicator: UIView) {
+    func removeIndicator(indicator: UIView?) {
+        guard let indicator = indicator else { return }
+        
         DispatchQueue.main.async {
             indicator.removeFromSuperview()
         }

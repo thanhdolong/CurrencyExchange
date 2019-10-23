@@ -14,6 +14,20 @@ class HomeViewController: UIViewController {
     var homeViewModel: HomeViewModel
     var homeView: HomeView! { return (view as! HomeView) }
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self,
+                                 action: #selector(refresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Currency Rates")
+        return refreshControl
+    }()
+    
+    @objc func refresh(_ sender: UIRefreshControl) {
+        self.homeViewModel.downloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -49,6 +63,9 @@ class HomeViewController: UIViewController {
     }
     
     private func setupViewModel() {
+        homeView.indicator = showActivityIndicatory(onView: self.view)
+        homeView.tableView.addSubview(refreshControl)
+        
         homeViewModel.delegate = self
         homeViewModel.downloadData()
     }
@@ -95,6 +112,8 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: HomeViewModelDelegate {
     func didRecieveDataUpdate() {
+        refreshControl.endRefreshing()
+        removeIndicator(indicator: homeView.indicator)
         homeView.tableView.reloadData()
     }
     

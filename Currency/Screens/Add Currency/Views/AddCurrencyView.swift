@@ -10,13 +10,17 @@ import UIKit
 import SnapKit
 
 class AddCurrencyView: UIView {
-    weak var tableView: UITableView!
+    weak var tableView: UITableView! {
+        didSet {
+            tableView.keyboardDismissMode = .onDrag
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .green
         createSubviews()
-//        collectionView.register(CurrencyCollectionViewCell.nib, forCellWithReuseIdentifier: CurrencyCollectionViewCell.reuseIdentifier)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

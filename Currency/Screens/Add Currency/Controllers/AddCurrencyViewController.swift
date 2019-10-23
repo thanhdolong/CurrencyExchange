@@ -85,7 +85,8 @@ extension AddCurrencyViewController: UITableViewDataSource {
         guard let cell = addCurrencView.tableView.dequeueReusableCell(withIdentifier: GroupOfCurrenciesTableViewCell.reuseIdentifier, for: indexPath) as? GroupOfCurrenciesTableViewCell else {
             return self.tableView(tableView, cellForRowAt: indexPath)
         }
-        cell.awakeFromNib()
+        
+        cell.items = addCurrencViewModel.getValues(from: indexPath.section)
         return cell
     }
 }
@@ -93,7 +94,8 @@ extension AddCurrencyViewController: UITableViewDataSource {
 
 extension AddCurrencyViewController: AddCurrencyViewModelDelegate {
     func didRecieveDataUpdate() {
-        print(addCurrencViewModel.data)
+        print(addCurrencViewModel.filteredCurrencies)
+        addCurrencView.tableView.reloadData()
     }
     
     func didRecieveError(error: String?) {

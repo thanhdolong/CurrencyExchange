@@ -10,5 +10,11 @@ import UIKit
 
 class HomeView: UIView {
     var indicator: UIView?
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.backgroundColor = UIColor(named: "backgroundColor")
+            tableView.keyboardDismissMode = .onDrag
+        }
+    }
+    
 }

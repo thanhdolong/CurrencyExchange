@@ -14,5 +14,8 @@ class CurrencyCollectionViewCell: UICollectionViewCell, ReusableView {
         super.awakeFromNib()
         // Initialization code
     }
-
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
 }

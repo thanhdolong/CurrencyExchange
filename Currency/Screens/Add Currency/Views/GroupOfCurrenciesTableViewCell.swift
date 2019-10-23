@@ -9,13 +9,23 @@
 import UIKit
 
 class GroupOfCurrenciesTableViewCell: UITableViewCell, ReusableView {
-    var items: [Currency] = []
+    var items: [Currency] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     weak var collectionView: UICollectionView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         selectionStyle = .none
         createSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func createSubviews() {
@@ -53,11 +63,14 @@ extension GroupOfCurrenciesTableViewCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrencyCollectionViewCell.reuseIdentifier, for: indexPath) as! CurrencyCollectionViewCell
+        
+        cell.titleLabel.text = items[indexPath.row].name
+        cell.subtitleLabel.text = items[indexPath.row].code.uppercased()
         
         return cell
     }

@@ -26,9 +26,9 @@ class CurrencyRateTableViewCell: UITableViewCell, CurrencyRateCell, ReusableView
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                currencyLabel.textColor = .red
+                currencyLabel.textColor = UIColor(named: "SelectedTextColor")
             } else {
-                currencyLabel.textColor = .black
+                currencyLabel.textColor = UIColor(named: "DefaultTextColor")
             }
         }
     }

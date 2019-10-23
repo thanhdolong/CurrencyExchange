@@ -21,17 +21,13 @@ final class AddCurrencyViewModel {
         }
     }
     
-    private var filteredCurrencies: [Currency] = [] {
+    public var filteredCurrencies: GroupedCurrecies = GroupedCurrecies() {
         didSet {
             delegate?.didRecieveDataUpdate()
         }
     }
     
     public weak var delegate: AddCurrencyViewModelDelegate?
-    
-    public var data: GroupedCurrecies {
-        return currencies
-    }
     
     public var isFiltering: Bool {
         guard let query = query else { return false }
@@ -41,33 +37,46 @@ final class AddCurrencyViewModel {
     public var query: String? {
         didSet {
             guard let query = query, query.isEmpty == false else {
-                filteredCurrencies = []
+                filteredCurrencies = GroupedCurrecies()
                 return
             }
             
-//            let result = currencies.filter({ (currency) -> Bool in
-//                return currency.name.lowercased().contains(query.lowercased())
-//            })
-            
-//            self.filteredCurrencies = result
+            let groupedResult = currencies.compactMapValues { (currencies) -> [Currency] in
+                let filteredCurencies = currencies.filter({ (currency) -> Bool in
+                    return currency.name.lowercased().contains(query.lowercased())
+                })
+                
+                return filteredCurencies
+            }
+
+            self.filteredCurrencies = groupedResult
         }
     }
     
     public func getAllKeys() -> [String] {
-        return Array(currencies.keys).sorted()
+        if isFiltering {
+            return Array(filteredCurrencies.filter{ !$0.value.isEmpty }.keys).sorted()
+        } else {
+            return Array(currencies.keys).sorted()
+        }
     }
     
     public func getKeyFrom(_ section: Int) -> String {
         return getAllKeys()[section]
     }
     
+    public func getValues(from section: Int) -> [Currency] {
+        let key = getKeyFrom(section)
+        return isFiltering ? filteredCurrencies[key] ?? [] : currencies[key] ?? []
+    }
+    
     public var numberOfSections: Int {
-        return currencies.count
+        return getAllKeys().count
     }
     
     public func numberOfRowsInSection(_ section: Int) -> Int {
         let key = getKeyFrom(section)
-        return currencies[key]!.count
+        return isFiltering ? filteredCurrencies[key]!.count : currencies[key]!.count
     }
     
     public func downloadData() {

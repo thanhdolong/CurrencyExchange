@@ -9,13 +9,18 @@ import Foundation
 import Alamofire
 
 protocol Networking: class {
+    var isConnectedToInternet: Bool { get }
     func fetchDecodable<T: Decodable>(route: Route, decoder: JSONDecoder, completion: @escaping (Result<T, AFError>) -> Void)
 }
 
 class NetworkingImpl: Networking {
     private let urlSession = URLSession.shared
 
-    internal func fetchDecodable<T: Decodable>(route: Route, decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Result<T, AFError>) -> Void) {
+    var isConnectedToInternet: Bool {
+        return NetworkReachabilityManager()?.isReachable ?? false
+    }
+
+    func fetchDecodable<T: Decodable>(route: Route, decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Result<T, AFError>) -> Void) {
 
         AF.request(route).validate().responseDecodable(of: T.self,
                                                        decoder: decoder,

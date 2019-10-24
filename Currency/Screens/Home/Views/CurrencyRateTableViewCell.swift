@@ -46,7 +46,7 @@ class CurrencyRateTableViewCell: UITableViewCell, CurrencyRateCell, ReusableView
             flagImage.makeRounded()
         }
     }
-    
+
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!

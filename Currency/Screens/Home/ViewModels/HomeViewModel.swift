@@ -95,8 +95,12 @@ final class HomeViewModel {
                     self.currencies = self.loadJson(filename: "currencies")
                     self.date = response.timestamp
                     self.rates = response.rates
-                    self.convertCurrency()
 
+                    if self.base != nil {
+                        self.convertCurrency()
+                    }
+
+                    self.delegate?.didRecieveDataUpdate()
                 }
             case .failure(let error):
                 self.delegate?.didRecieveError(error: error.errorDescription)

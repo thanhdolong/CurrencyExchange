@@ -10,18 +10,12 @@ import UIKit
 import SnapKit
 
 class AddCurrencyView: UIView {
-    var searchController: UISearchController! {
-        didSet {
-            searchController.obscuresBackgroundDuringPresentation = true
-            searchController.searchBar.placeholder = "Search"
-        }
-    }
+    var searchController: UISearchController!
 
     var navigationItem: UINavigationItem! {
         didSet {
 //            navigationItem.prompt = "Type a currency name"
             navigationItem.title = "Add"
-            navigationItem.searchController = searchController
             navigationItem.largeTitleDisplayMode = .never
         }
     }
@@ -38,6 +32,8 @@ class AddCurrencyView: UIView {
         super.init(frame: frame)
 
         searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
         self.backgroundColor = UIColor(named: "BackgroundColor")
         createSubviews()
 
@@ -61,6 +57,7 @@ class AddCurrencyView: UIView {
         }
 
         tableView.backgroundColor = UIColor(named: "BackgroundColor")
+        tableView.tableHeaderView = searchController.searchBar
         tableView.rowHeight = 200
 
         self.tableView = tableView

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 // MARK: Alert Extensions
 extension UIViewController {
@@ -32,26 +33,31 @@ extension UIViewController {
 // MARK: Display indicator Extensions
 extension UIViewController {
     func showActivityIndicatory(onView: UIView, offset: CGFloat = 0) -> UIView {
+        let window = UIWindow(frame: UIScreen.main.bounds)
 
-        let boxView = UIView(frame: CGRect(x: (view.center.x - 40), y: (view.center.y - 40) + offset, width: 80, height: 80))
-        boxView.backgroundColor = UIColor.gray
-        boxView.layer.cornerRadius = 10
+        let containerView = UIView()
+        containerView.frame = window.frame
+        containerView.center = window.center
+        containerView.backgroundColor = UIColor.systemGray2.withAlphaComponent(0.3)
 
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
+        let loadingView = UIView()
+        loadingView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        loadingView.center = view.center
+        loadingView.backgroundColor = UIColor.systemGray
+        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
 
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .large
+        activityIndicator.center = CGPoint(x: loadingView.bounds.width/2, y: loadingView.bounds.height/2 + offset)
+
         activityIndicator.startAnimating()
-        activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + offset)
+        loadingView.addSubview(activityIndicator)
+        containerView.addSubview(loadingView)
 
-        DispatchQueue.main.async {
-            spinnerView.addSubview(boxView)
-            spinnerView.addSubview(activityIndicator)
-            onView.addSubview(spinnerView)
-        }
+        onView.addSubview(containerView)
 
-        return spinnerView
+        return containerView
     }
 
     func removeIndicator(indicator: UIView?) {

@@ -14,13 +14,13 @@ protocol Networking: class {
 
 class NetworkingImpl: Networking {
     private let urlSession = URLSession.shared
-    
+
     internal func fetchDecodable<T: Decodable>(route: Route, decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Result<T, AFError>) -> Void) {
-        
+
         AF.request(route).validate().responseDecodable(of: T.self,
                                                        decoder: decoder,
                                                        completionHandler: { (response) in
-            
+
             switch response.result {
             case .success(let values):
                 completion(.success(values))

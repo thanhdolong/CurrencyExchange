@@ -19,10 +19,10 @@ extension Route {
     public func asURLRequest() throws -> URLRequest {
         let url = try baseURL.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-        
+
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
-        
+
         // Parameters
         if let parameters = parameters {
             do {
@@ -35,7 +35,7 @@ extension Route {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
         }
-        
+
         return urlRequest
     }
 }

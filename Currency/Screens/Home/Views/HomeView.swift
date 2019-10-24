@@ -16,5 +16,5 @@ class HomeView: UIView {
             tableView.keyboardDismissMode = .onDrag
         }
     }
-    
+
 }

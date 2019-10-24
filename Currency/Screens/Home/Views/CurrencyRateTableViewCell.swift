@@ -22,7 +22,7 @@ class CurrencyRateTableViewCell: UITableViewCell, CurrencyRateCell, ReusableView
         super.awakeFromNib()
         selectionStyle = .none
     }
-    
+
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -32,7 +32,7 @@ class CurrencyRateTableViewCell: UITableViewCell, CurrencyRateCell, ReusableView
             }
         }
     }
-    
+
     @IBOutlet weak var flagImage: UIImageView!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!

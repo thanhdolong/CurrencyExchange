@@ -16,15 +16,15 @@ protocol CurrencyService: class {
 
 final class CurrencyServiceImpl: CurrencyService {
     private var networking: Networking
-    
+
     init(networking: Networking) {
         self.networking = networking
     }
-    
+
     func getRates(result: @escaping (FixerResult) -> Void) {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
-        
+
         networking.fetchDecodable(route: FixerRoute.latestRate, decoder: decoder) { (response: FixerResult) in
             switch response {
             case .success(let values):

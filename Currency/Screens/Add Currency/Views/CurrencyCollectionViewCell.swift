@@ -14,7 +14,7 @@ class CurrencyCollectionViewCell: UICollectionViewCell, ReusableView {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -24,10 +24,10 @@ class CurrencyCollectionViewCell: UICollectionViewCell, ReusableView {
             }
         }
     }
-    
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var bgView: UIView!
-    
+
 }

@@ -9,11 +9,11 @@
 import Swinject
 
 protocol Coordinator: class {
-    
+
     var children: [Coordinator] { get set }
     var router: Router { get }
     var container: Container { get }
-    
+
     func present(animated: Bool, onDismissed: (() -> Void)?)
     func dismiss(animated: Bool)
     func presentChild(_ child: Coordinator,
@@ -22,11 +22,11 @@ protocol Coordinator: class {
 }
 
 extension Coordinator {
-    
+
     public func dismiss(animated: Bool) {
         router.dismiss(animated: true)
     }
-    
+
     public func presentChild(_ child: Coordinator,
                              animated: Bool,
                              onDismissed: (() -> Void)? = nil) {
@@ -37,7 +37,7 @@ extension Coordinator {
             onDismissed?()
         })
     }
-    
+
     private func removeChild(_ child: Coordinator) {
         guard let index = children.firstIndex(where: { $0 === child })
             else {

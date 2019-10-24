@@ -15,13 +15,13 @@ final class AddCurrencyCoordinator: Coordinator {
     var children: [Coordinator] = []
     let container: Container
     let router: Router
-    
+
     // MARK: - Object Lifecycle
     public init(router: Router, container: Container) {
         self.router = router
         self.container = container
     }
-    
+
     // MARK: - Instance Methods
     public func present(animated: Bool, onDismissed: (() -> Void)?) {
         let viewController = container.resolve(AddCurrencyViewController.self)!

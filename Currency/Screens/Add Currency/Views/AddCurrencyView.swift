@@ -16,7 +16,7 @@ class AddCurrencyView: UIView {
             searchController.searchBar.placeholder = "Search"
         }
     }
-    
+
     var navigationItem: UINavigationItem! {
         didSet {
 //            navigationItem.prompt = "Type a currency name"
@@ -25,42 +25,42 @@ class AddCurrencyView: UIView {
             navigationItem.largeTitleDisplayMode = .never
         }
     }
-    
+
     weak var tableView: UITableView! {
         didSet {
             tableView.keyboardDismissMode = .onDrag
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         searchController = UISearchController(searchResultsController: nil)
         self.backgroundColor = UIColor(named: "BackgroundColor")
         createSubviews()
-        
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     private func createSubviews() {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         self.addSubview(tableView)
-        
+
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp_topMargin)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        
+
         tableView.backgroundColor = UIColor(named: "BackgroundColor")
         tableView.rowHeight = 200
-        
+
         self.tableView = tableView
     }
 }

@@ -112,9 +112,11 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        homeViewModel.setBaseCurrency(for: indexPath)
+        let currency = homeViewModel.getCurrency(from: indexPath.row)
+        homeViewModel.base = currency.code
+        homeViewModel.currencyConvert()
+        homeView.tableView.reloadData()
     }
 }
 
@@ -126,6 +128,8 @@ extension HomeViewController: HomeViewModelDelegate {
     }
 
     func didRecieveError(error: String?) {
+        refreshControl.endRefreshing()
+        removeIndicator(indicator: homeView.indicator)
         presentAlertAction(withTitle: "Something went wrong", message: error)
     }
 }

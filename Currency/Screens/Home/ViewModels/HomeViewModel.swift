@@ -31,7 +31,20 @@ final class HomeViewModel {
         }
     }
     private var date: Date?
-    private var base: String?
+    public var base: String? {
+        get {
+            let defaults = UserDefaults.standard
+            let base = defaults.string(forKey: "base")
+            return base
+        }
+
+        set(newBase) {
+            guard let newBase = newBase else { return }
+            let defaults = UserDefaults.standard
+            defaults.set(newBase, forKey: "base")
+        }
+    }
+
     private var rates: Rates = Rates()
 
     private let currencyService: CurrencyService
@@ -81,12 +94,7 @@ final class HomeViewModel {
                     self.currencies = self.loadJson(filename: "currencies")
                     self.date = response.timestamp
                     self.rates = response.rates
-
-                    if let base = self.base {
-                        self.currencyConvert(code: base)
-                    } else {
-                        self.currencyConvert(code: response.base)
-                    }
+                    self.currencyConvert()
 
                 }
             case .failure(let error):
@@ -95,14 +103,20 @@ final class HomeViewModel {
         }
     }
 
-    public func setBaseCurrency(for indexPath: IndexPath) {
-        let currency = getCurrency(from: indexPath.row)
-        self.base = currency.code
-        currencyConvert(code: currency.code)
+    public func getBaseCurrency() -> String? {
+        if let code = base, selectedCurrencies.contains(where: {$0.code == code}) {
+            return code
+        }
+
+        if let baseCurrency = selectedCurrencies.first {
+            self.base = baseCurrency.code
+        }
+
+        return base
     }
 
-    private func currencyConvert(code: String) {
-        guard let basePrice = rates[code] else {
+    public func currencyConvert() {
+        guard let base = getBaseCurrency(), let basePrice = rates[base] else {
             delegate?.didRecieveError(error: "The currency cannot be converted.")
             return
         }

@@ -105,12 +105,14 @@ extension GroupOfCurrenciesTableViewCell: UICollectionViewDelegate {
     }
 
     private func toggleCurrencyStatus(_ indexPath: IndexPath) {
-        guard let index = selectedCurrencies.firstIndex(of: items[indexPath.row].code) else {
-            selectedCurrencies.insert(items[indexPath.row].code)
+        let code = items[indexPath.row].code
+
+        guard selectedCurrencies.contains(code) else {
+            selectedCurrencies.insert(code)
             return
         }
 
-        selectedCurrencies.remove(at: index)
+        selectedCurrencies.remove(code)
     }
 }
 

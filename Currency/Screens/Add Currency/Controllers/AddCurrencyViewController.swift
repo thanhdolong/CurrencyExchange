@@ -35,6 +35,7 @@ class AddCurrencyViewController: UIViewController {
 
     private func setupView() {
         addCurrencView.tableView.dataSource = self
+        addCurrencView.tableView.delegate = addCurrencView.self
         addCurrencView.tableView.register(GroupOfCurrenciesTableViewCell.self, forCellReuseIdentifier: GroupOfCurrenciesTableViewCell.reuseIdentifier)
         addCurrencView.navigationItem = navigationItem
     }

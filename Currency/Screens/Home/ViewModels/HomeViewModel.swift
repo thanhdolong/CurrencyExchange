@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Kingfisher
 
 protocol HomeViewModelDelegate: class {
     func didRecieveDataUpdate()
@@ -94,7 +95,7 @@ final class HomeViewModel {
                     self.currencies = self.loadJson(filename: "currencies")
                     self.date = response.timestamp
                     self.rates = response.rates
-                    self.currencyConvert()
+                    self.convertCurrency()
 
                 }
             case .failure(let error):
@@ -115,7 +116,7 @@ final class HomeViewModel {
         return base
     }
 
-    public func currencyConvert() {
+    public func convertCurrency() {
         guard let base = getBaseCurrency(), let basePrice = rates[base] else {
             delegate?.didRecieveError(error: "The currency cannot be converted.")
             return
@@ -155,5 +156,6 @@ final class HomeViewModel {
         view.currencyLabel.text = currency.name
         view.rateLabel.text = String(format: "%.\(currency.decimalDigits)f", rates)
         view.symbolLabel.text = currency.symbol
+        view.flagImage.kf.setImage(with: currency.flag)
     }
 }

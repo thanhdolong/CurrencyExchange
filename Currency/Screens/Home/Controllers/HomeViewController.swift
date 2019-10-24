@@ -115,7 +115,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currency = homeViewModel.getCurrency(from: indexPath.row)
         homeViewModel.base = currency.code
-        homeViewModel.currencyConvert()
+        homeViewModel.convertCurrency()
         homeView.tableView.reloadData()
     }
 }

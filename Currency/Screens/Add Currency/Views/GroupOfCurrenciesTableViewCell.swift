@@ -84,11 +84,13 @@ extension GroupOfCurrenciesTableViewCell: UICollectionViewDataSource {
         let currency = items[indexPath.row]
         cell.titleLabel.text = currency.name
         cell.subtitleLabel.text = currency.code.uppercased()
+        cell.imageView.kf.setImage(with: currency.flag)
+        cell.imageView.makeRounded()
 
         if selectedCurrencies.contains(currency.code) {
-            cell.bgView.backgroundColor = .red
+            cell.isCurrencySelected = true
         } else {
-            cell.bgView.backgroundColor = .blue
+            cell.isCurrencySelected = false
         }
         return cell
     }

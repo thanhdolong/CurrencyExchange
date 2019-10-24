@@ -26,15 +26,33 @@ class CurrencyRateTableViewCell: UITableViewCell, CurrencyRateCell, ReusableView
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                currencyLabel.textColor = UIColor(named: "SelectedTextColor")
+                let selectedColor = UIColor(named: "SelectedTextColor")
+                bgView.backgroundColor = UIColor(named: "SelectedBgColor")
+                currencyLabel.textColor = selectedColor
+                rateLabel.textColor = selectedColor
+                symbolLabel.textColor = selectedColor
             } else {
-                currencyLabel.textColor = UIColor(named: "DefaultTextColor")
+                let defaultColor = UIColor(named: "DefaultTextColor")
+                bgView.backgroundColor = UIColor(named: "SecondaryBgColor")
+                currencyLabel.textColor = defaultColor
+                rateLabel.textColor = defaultColor
+                symbolLabel.textColor = defaultColor
             }
         }
     }
 
-    @IBOutlet weak var flagImage: UIImageView!
+    @IBOutlet weak var flagImage: UIImageView! {
+        didSet {
+            flagImage.makeRounded()
+        }
+    }
+    
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var symbolLabel: UILabel!
+    @IBOutlet weak var bgView: UIView! {
+        didSet {
+            bgView.layer.cornerRadius = 30
+        }
+    }
 }

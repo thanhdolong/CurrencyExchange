@@ -9,18 +9,19 @@
 import UIKit
 
 class CurrencyCollectionViewCell: UICollectionViewCell, ReusableView {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override var isSelected: Bool {
+    var isCurrencySelected: Bool? {
         didSet {
-            if isSelected {
-                titleLabel.textColor = UIColor(named: "SelectedTextColor")
+            guard let isActive = isCurrencySelected else { return }
+            if isActive {
+                let selectedColor = UIColor(named: "SelectedTextColor")
+                bgView.backgroundColor = UIColor(named: "SelectedBgColor")
+                titleLabel.textColor = selectedColor
+                subtitleLabel.textColor = selectedColor
             } else {
-                titleLabel.textColor = UIColor(named: "DefaultTextColor")
+                let defaultColor = UIColor(named: "DefaultTextColor")
+                bgView.backgroundColor = UIColor(named: "SecondaryBgColor")
+                titleLabel.textColor = defaultColor
+                subtitleLabel.textColor = defaultColor
             }
         }
     }
@@ -28,6 +29,10 @@ class CurrencyCollectionViewCell: UICollectionViewCell, ReusableView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var bgView: UIView! {
+        didSet {
+            bgView.layer.cornerRadius = 30
+        }
+    }
 
 }

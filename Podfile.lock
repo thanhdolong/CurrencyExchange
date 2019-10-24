@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
+  - Kingfisher (5.9.0):
+    - Kingfisher/Core (= 5.9.0)
+  - Kingfisher/Core (5.9.0)
   - Nimble (8.0.4)
   - Quick (2.2.0)
   - SnapKit (5.0.1)
@@ -8,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 5.0.0-rc.2)
+  - Kingfisher (~> 5.9)
   - Nimble (~> 8.0)
   - Quick (~> 2.2)
   - SnapKit (~> 5.0)
@@ -17,6 +21,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Kingfisher
     - Nimble
     - Quick
     - SnapKit
@@ -25,12 +30,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
   Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 30564f3cb2e37f840dbe42c8ab71dcc124886990
+PODFILE CHECKSUM: 7a3c1b1be6876c984a1c2212f4f49717d667c233
 
 COCOAPODS: 1.8.3

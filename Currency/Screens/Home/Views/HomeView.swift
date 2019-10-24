@@ -13,8 +13,18 @@ class HomeView: UIView {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.backgroundColor = UIColor(named: "BackgroundColor")
+            tableView.tableFooterView = UIView()
+            tableView.separatorStyle = .none
             tableView.keyboardDismissMode = .onDrag
         }
     }
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }

@@ -438,6 +438,7 @@
 				6F24BAC5235DE16D006A3692 /* Frameworks */,
 				6F24BAC6235DE16D006A3692 /* Resources */,
 				046DB14BFCDA51D9D5637CEE /* [CP] Embed Pods Frameworks */,
+				6F24BB5323619F23006A3692 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -597,6 +598,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Currency-CurrencyUITests/Pods-Currency-CurrencyUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6F24BB5323619F23006A3692 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		8B720C7FF782EC9C3FAFAEA1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

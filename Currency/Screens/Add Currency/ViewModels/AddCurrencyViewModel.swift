@@ -21,7 +21,7 @@ final class AddCurrencyViewModel {
         }
     }
     
-    public var filteredCurrencies: GroupedCurrecies = GroupedCurrecies() {
+    private var filteredCurrencies: GroupedCurrecies = GroupedCurrecies() {
         didSet {
             delegate?.didRecieveDataUpdate()
         }

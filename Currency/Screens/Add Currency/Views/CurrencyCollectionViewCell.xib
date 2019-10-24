@@ -55,7 +55,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="toW-7R-Tal" firstAttribute="top" secondItem="r7g-S5-BR7" secondAttribute="top" constant="20" id="NSf-74-YXN"/>
                             <constraint firstAttribute="bottom" secondItem="toW-7R-Tal" secondAttribute="bottom" constant="20" id="eP6-IW-w4j"/>
@@ -65,7 +65,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="r7g-S5-BR7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6C1-nc-zRS"/>
                 <constraint firstItem="r7g-S5-BR7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7bE-81-vpH"/>
@@ -74,6 +74,7 @@
             </constraints>
             <size key="customSize" width="127" height="150"/>
             <connections>
+                <outlet property="bgView" destination="r7g-S5-BR7" id="N9i-mH-ium"/>
                 <outlet property="imageView" destination="Np9-fc-wCc" id="L3F-PD-oqN"/>
                 <outlet property="subtitleLabel" destination="BLC-pf-cYC" id="jYZ-fV-YAa"/>
                 <outlet property="titleLabel" destination="ZLm-cv-pAx" id="sa2-Qd-fR1"/>

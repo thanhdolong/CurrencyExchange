@@ -16,6 +16,15 @@ protocol HomeViewModelDelegate: class {
 
 final class HomeViewModel {
     private var currencies: [Currency] = []
+    private var selectedCurrencies: [Currency] {
+        let defaults = UserDefaults.standard
+        let selectedArray: [String] = defaults.array(forKey: "selectedCurrencies") as? [String] ?? [String]()
+        
+        return currencies.filter { currency -> Bool in
+            selectedArray.contains(currency.code)
+        }
+    }
+    
     private var filteredCurrencies: [Currency] = [] {
         didSet {
             delegate?.didRecieveDataUpdate()
@@ -48,7 +57,7 @@ final class HomeViewModel {
                 return
             }
             
-            let result = currencies.filter({ (currency) -> Bool in
+            let result = selectedCurrencies.filter({ (currency) -> Bool in
                 return currency.name.lowercased().contains(query.lowercased())
             })
             
@@ -57,11 +66,11 @@ final class HomeViewModel {
     }
     
     public var numberOfRowsInSection: Int {
-        return isFiltering ? filteredCurrencies.count : currencies.count
+        return isFiltering ? filteredCurrencies.count : selectedCurrencies.count
     }
     
     public func getCurrency(from index: Int) -> Currency {
-        return isFiltering ? filteredCurrencies[index] : currencies[index]
+        return isFiltering ? filteredCurrencies[index] : selectedCurrencies[index]
     }
     
     public func downloadData() {

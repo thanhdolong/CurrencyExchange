@@ -9,7 +9,6 @@
 import UIKit
 
 class AddCurrencyViewController: UIViewController {
-    let searchController: UISearchController
     var addCurrencViewModel: AddCurrencyViewModel
     var addCurrencView: AddCurrencyView! { return (view as! AddCurrencyView) }
     
@@ -25,13 +24,9 @@ class AddCurrencyViewController: UIViewController {
         view = addCurrencView
     }
     
-    init(addCurrencViewModel: AddCurrencyViewModel,
-         searchController: UISearchController = UISearchController(searchResultsController: nil)) {
+    init(addCurrencViewModel: AddCurrencyViewModel) {
         self.addCurrencViewModel = addCurrencViewModel
-        self.searchController = searchController
         super.init(nibName: nil, bundle: nil)
-        
-        self.setupNavigationController()
     }
     
     required init?(coder: NSCoder) {
@@ -41,12 +36,7 @@ class AddCurrencyViewController: UIViewController {
     private func setupView() {
         addCurrencView.tableView.dataSource = self
         addCurrencView.tableView.register(GroupOfCurrenciesTableViewCell.self, forCellReuseIdentifier: GroupOfCurrenciesTableViewCell.reuseIdentifier)
-    }
-    
-    private func setupNavigationController() {
-        navigationItem.prompt = "Type a currency name"
-        navigationItem.title = "Add"
-        navigationItem.searchController = searchController
+        addCurrencView.navigationItem = navigationItem
     }
     
     private func setupViewModel() {
@@ -55,11 +45,8 @@ class AddCurrencyViewController: UIViewController {
     }
 
     private func setupSearchController() {
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        definesPresentationContext = true
+        addCurrencView.searchController.searchResultsUpdater = self
+        addCurrencView.searchController.searchBar.delegate = self
     }
 }
 
@@ -94,7 +81,6 @@ extension AddCurrencyViewController: UITableViewDataSource {
 
 extension AddCurrencyViewController: AddCurrencyViewModelDelegate {
     func didRecieveDataUpdate() {
-        print(addCurrencViewModel.filteredCurrencies)
         addCurrencView.tableView.reloadData()
     }
     

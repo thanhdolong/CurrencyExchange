@@ -34,7 +34,9 @@ extension HomeCoordinator: HomeViewControllerDelegate {
     func homeViewControllerDidPressAddCurrency(_ viewController: HomeViewController) {
         let router = ModalNavigationRouter(parentViewController: viewController)
         let coordinator = AddCurrencyCoordinator(router: router, container: container)
-        presentChild(coordinator, animated: true)
+        presentChild(coordinator, animated: true, onDismissed: {
+            viewController.homeView.tableView.reloadData()
+        })
     }
 }
 

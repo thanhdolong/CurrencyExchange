@@ -9,8 +9,22 @@
 import UIKit
 
 class GroupOfCurrenciesTableViewCell: UITableViewCell, ReusableView {
-    var items: [Currency] = [] {
+    public var items: [Currency] = [] {
         didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    private var selectedCurrencies: Set<String> {
+        get {
+            let defaults = UserDefaults.standard
+            let selectedArray: [String] = defaults.array(forKey: "selectedCurrencies") as? [String] ?? [String]()
+            return Set(selectedArray)
+        }
+    
+        set(newSelectedCurrencies) {
+            let defaults = UserDefaults.standard
+            defaults.set(Array(newSelectedCurrencies), forKey: "selectedCurrencies")
             collectionView.reloadData()
         }
     }
@@ -19,7 +33,6 @@ class GroupOfCurrenciesTableViewCell: UITableViewCell, ReusableView {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         selectionStyle = .none
         createSubviews()
     }
@@ -31,10 +44,10 @@ class GroupOfCurrenciesTableViewCell: UITableViewCell, ReusableView {
     private func createSubviews() {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = true
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .horizontal  // .horizontal
+            layout.scrollDirection = .horizontal
         }
         
         addSubview(collectionView)
@@ -47,7 +60,7 @@ class GroupOfCurrenciesTableViewCell: UITableViewCell, ReusableView {
             make.right.equalToSuperview()
         }
         
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = UIColor(named: "BackgroundColor")
         collectionView.dataSource = self
         collectionView.delegate = self
 
@@ -69,17 +82,36 @@ extension GroupOfCurrenciesTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrencyCollectionViewCell.reuseIdentifier, for: indexPath) as! CurrencyCollectionViewCell
         
-        cell.titleLabel.text = items[indexPath.row].name
-        cell.subtitleLabel.text = items[indexPath.row].code.uppercased()
+        let currency = items[indexPath.row]
+        cell.titleLabel.text = currency.name
+        cell.subtitleLabel.text = currency.code.uppercased()
         
+        if selectedCurrencies.contains(currency.code) {
+            cell.bgView.backgroundColor = .red
+        } else {
+            cell.bgView.backgroundColor = .blue
+        }
         return cell
     }
 }
 
 extension GroupOfCurrenciesTableViewCell: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row + 1)
+        toggleCurrencyStatus(indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        toggleCurrencyStatus(indexPath)
+    }
+    
+    private func toggleCurrencyStatus(_ indexPath: IndexPath) {
+        guard let index = selectedCurrencies.firstIndex(of: items[indexPath.row].code) else {
+            selectedCurrencies.insert(items[indexPath.row].code)
+            return
+        }
+
+        selectedCurrencies.remove(at: index)
     }
 }
 

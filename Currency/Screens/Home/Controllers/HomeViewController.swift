@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 protocol HomeViewControllerDelegate: class {
-  func homeViewControllerDidPressAddCurrency(_ viewController: HomeViewController)
+    func homeViewControllerDidPressAddCurrency(_ viewController: HomeViewController)
 }
 
 class HomeViewController: UIViewController {

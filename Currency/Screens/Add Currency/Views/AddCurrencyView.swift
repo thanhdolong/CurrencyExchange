@@ -33,7 +33,9 @@ class AddCurrencyView: UIView {
 
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.backgroundColor = .clear
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.backgroundImage = UIImage()
         self.backgroundColor = UIColor(named: "BackgroundColor")
         createSubviews()
 
@@ -58,6 +60,7 @@ class AddCurrencyView: UIView {
 
         tableView.backgroundColor = UIColor(named: "BackgroundColor")
         tableView.tableHeaderView = searchController.searchBar
+        tableView.backgroundView = UIView()
         tableView.rowHeight = 200
 
         self.tableView = tableView
@@ -67,10 +70,9 @@ class AddCurrencyView: UIView {
 extension AddCurrencyView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 
-        view.tintColor = UIColor(named: "BackgroundColor")
+        view.tintColor = UIColor.clear
 
         let header = view as! UITableViewHeaderFooterView
-        header.layer.borderWidth = 1
         header.layer.borderColor = UIColor.clear.cgColor
 
         header.textLabel?.textColor = UIColor(named: "DefaultTextColor")

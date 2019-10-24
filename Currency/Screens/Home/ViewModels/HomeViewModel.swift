@@ -101,7 +101,7 @@ final class HomeViewModel {
                     }
 
                     self.delegate?.didRecieveDataUpdate()
-                }
+            }
             case .failure(let error):
                 self.delegate?.didRecieveError(error: error.errorDescription)
             }

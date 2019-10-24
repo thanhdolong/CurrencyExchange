@@ -45,6 +45,7 @@ class GroupOfCurrenciesTableViewCell: UITableViewCell, ReusableView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.allowsMultipleSelection = true
+        collectionView.showsHorizontalScrollIndicator = false
 
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal

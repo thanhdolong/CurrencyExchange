@@ -52,7 +52,6 @@ class GroupOfCurrenciesTableViewCell: UITableViewCell, ReusableView {
         
         addSubview(collectionView)
         
-        
         collectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()

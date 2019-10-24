@@ -14,7 +14,7 @@ protocol AddCurrencyViewModelDelegate: class {
 }
 
 final class AddCurrencyViewModel {
-    typealias GroupedCurrecies = Dictionary<String, [Currency]>
+    typealias GroupedCurrecies = [String: [Currency]]
     private var currencies: GroupedCurrecies = GroupedCurrecies() {
         didSet {
             delegate?.didRecieveDataUpdate()
@@ -55,7 +55,7 @@ final class AddCurrencyViewModel {
     
     public func getAllKeys() -> [String] {
         if isFiltering {
-            return Array(filteredCurrencies.filter{ !$0.value.isEmpty }.keys).sorted()
+            return Array(filteredCurrencies.filter { !$0.value.isEmpty }.keys).sorted()
         } else {
             return Array(currencies.keys).sorted()
         }

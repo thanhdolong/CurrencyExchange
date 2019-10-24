@@ -75,7 +75,7 @@ final class HomeViewModel {
     
     public func downloadData() {
         currencyService.getRates { result in
-            switch(result) {
+            switch result {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.currencies = self.loadJson(filename: "currencies")

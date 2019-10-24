@@ -19,7 +19,7 @@ public class AppDelegateRouter: Router {
   }
 
   // MARK: - Router
-  public func present(_ viewController: UIViewController, animated: Bool, onDismissed: (()->Void)?) {
+  public func present(_ viewController: UIViewController, animated: Bool, onDismissed: (() -> Void)?) {
     window.rootViewController = viewController
     window.makeKeyAndVisible()
   }

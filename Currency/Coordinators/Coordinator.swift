@@ -46,4 +46,3 @@ extension Coordinator {
         children.remove(at: index)
     }
 }
-

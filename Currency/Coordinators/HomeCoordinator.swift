@@ -39,5 +39,3 @@ extension HomeCoordinator: HomeViewControllerDelegate {
         })
     }
 }
-
-

@@ -14,8 +14,7 @@ public class ModalNavigationRouter: NSObject {
   public unowned let parentViewController: UIViewController
 
   private let navigationController = UINavigationController()
-  private var onDismissForViewController:
-    [UIViewController: (() -> Void)] = [:]
+  private var onDismissForViewController: [UIViewController: (() -> Void)] = [:]
 
   // MARK: - Object Lifecycle
   public init(parentViewController: UIViewController) {

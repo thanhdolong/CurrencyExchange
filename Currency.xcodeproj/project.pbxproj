@@ -15,7 +15,6 @@
 		6F24BACC235DE16D006A3692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24BACB235DE16D006A3692 /* AppDelegate.swift */; };
 		6F24BACE235DE16D006A3692 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24BACD235DE16D006A3692 /* SceneDelegate.swift */; };
 		6F24BAD2235DE174006A3692 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F24BAD1235DE174006A3692 /* Assets.xcassets */; };
-		6F24BAD5235DE174006A3692 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F24BAD4235DE174006A3692 /* Preview Assets.xcassets */; };
 		6F24BAD8235DE174006A3692 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F24BAD6235DE174006A3692 /* LaunchScreen.storyboard */; };
 		6F24BAFE235EF422006A3692 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24BAFD235EF422006A3692 /* Coordinator.swift */; };
 		6F24BB01235EF442006A3692 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24BB00235EF442006A3692 /* Router.swift */; };
@@ -73,7 +72,6 @@
 		6F24BACB235DE16D006A3692 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F24BACD235DE16D006A3692 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6F24BAD1235DE174006A3692 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6F24BAD4235DE174006A3692 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6F24BAD7235DE174006A3692 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F24BAD9235DE175006A3692 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F24BADE235DE175006A3692 /* CurrencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,23 +164,16 @@
 		6F24BACA235DE16D006A3692 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				6F24BB13235F41DD006A3692 /* Models */,
-				6F24BB08235EFB8E006A3692 /* Services */,
 				6F24BAFB235EF3D3006A3692 /* Application */,
 				6F24BAFC235EF3EA006A3692 /* Coordinators */,
+				6F24BB13235F41DD006A3692 /* Models */,
+				6F24BB03235EF46D006A3692 /* Resources */,
 				6F24BAFF235EF436006A3692 /* Routers */,
 				6F24BB02235EF457006A3692 /* Screens */,
-				6F24BB03235EF46D006A3692 /* Resources */,
+				6F24BB08235EFB8E006A3692 /* Services */,
+				6F24BB35235FA3D5006A3692 /* Utilities+Extensions */,
 			);
 			path = Currency;
-			sourceTree = "<group>";
-		};
-		6F24BAD3235DE174006A3692 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				6F24BAD4235DE174006A3692 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		6F24BAE1235DE175006A3692 /* CurrencyTests */ = {
@@ -199,9 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				6F24BACB235DE16D006A3692 /* AppDelegate.swift */,
+				6F24BB2D235F54CB006A3692 /* AppDependency.swift */,
 				6F24BAD6235DE174006A3692 /* LaunchScreen.storyboard */,
 				6F24BACD235DE16D006A3692 /* SceneDelegate.swift */,
-				6F24BB2D235F54CB006A3692 /* AppDependency.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -210,8 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				6F24BAFD235EF422006A3692 /* Coordinator.swift */,
-				6F24BB1F235F4B39006A3692 /* HomeCoordinator.swift */,
 				6F24BB4723604FCF006A3692 /* AddCurrencyCoordinator.swift */,
+				6F24BB1F235F4B39006A3692 /* HomeCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -220,8 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				6F24BB00235EF442006A3692 /* Router.swift */,
-				6F24BB3E23604F00006A3692 /* ModalNavigationRouter.swift */,
 				6F24BB21235F4B54006A3692 /* AppDelegateRouter.swift */,
+				6F24BB3E23604F00006A3692 /* ModalNavigationRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -238,13 +229,11 @@
 		6F24BB03235EF46D006A3692 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6F24BB35235FA3D5006A3692 /* Utilities+Extensions */,
-				6F24BB11235F4196006A3692 /* currencies.json */,
-				6F24BB04235EFB48006A3692 /* Networking */,
-				6F24BAD3235DE174006A3692 /* Preview Content */,
 				6F24BAD1235DE174006A3692 /* Assets.xcassets */,
-				6F24BAD9235DE175006A3692 /* Info.plist */,
+				6F24BB11235F4196006A3692 /* currencies.json */,
 				6F24BB2F235F7B76006A3692 /* Fixer.plist */,
+				6F24BAD9235DE175006A3692 /* Info.plist */,
+				6F24BB04235EFB48006A3692 /* Networking */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -323,10 +312,10 @@
 		6F24BB18235F4A47006A3692 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6F24BB1C235F4AB8006A3692 /* HomeViewController.xib */,
-				6F24BB27235F4EC9006A3692 /* HomeView.swift */,
 				6F24BB31235F96DE006A3692 /* CurrencyRateTableViewCell.swift */,
 				6F24BB32235F96DE006A3692 /* CurrencyRateTableViewCell.xib */,
+				6F24BB27235F4EC9006A3692 /* HomeView.swift */,
+				6F24BB1C235F4AB8006A3692 /* HomeViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -498,7 +487,6 @@
 				6F24BAD8235DE174006A3692 /* LaunchScreen.storyboard in Resources */,
 				6F24BB50236095D1006A3692 /* CurrencyCollectionViewCell.xib in Resources */,
 				6F24BB34235F96DE006A3692 /* CurrencyRateTableViewCell.xib in Resources */,
-				6F24BAD5235DE174006A3692 /* Preview Assets.xcassets in Resources */,
 				6F24BB1E235F4AB8006A3692 /* HomeViewController.xib in Resources */,
 				6F24BB12235F4196006A3692 /* currencies.json in Resources */,
 				6F24BAD2235DE174006A3692 /* Assets.xcassets in Resources */,

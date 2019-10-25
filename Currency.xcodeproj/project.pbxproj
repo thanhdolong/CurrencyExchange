@@ -791,7 +791,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Currency/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = KW278547Y4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Currency/Resources/Info.plist;
@@ -813,7 +812,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Currency/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = KW278547Y4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Currency/Resources/Info.plist;

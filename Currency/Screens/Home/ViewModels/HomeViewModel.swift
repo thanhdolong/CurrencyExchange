@@ -13,6 +13,7 @@ import Kingfisher
 protocol HomeViewModelDelegate: class {
     func didRecieveDataUpdate()
     func didRecieveError(error: String?)
+    func showNoReachableMessage()
 }
 
 final class HomeViewModel {
@@ -103,6 +104,10 @@ final class HomeViewModel {
                     self.delegate?.didRecieveDataUpdate()
             }
             case .failure(let error):
+                if self.currencies.count == 0 {
+                    self.delegate?.showNoReachableMessage()
+                }
+
                 self.delegate?.didRecieveError(error: error.errorDescription)
             }
         }
@@ -122,7 +127,12 @@ final class HomeViewModel {
 
     public func convertCurrency() {
         guard let base = getBaseCurrency(), let basePrice = rates[base] else {
-            delegate?.didRecieveError(error: "The currency cannot be converted.")
+            delegate?.didRecieveError(error: "The currency exchange rate still not loaded. 😭\nWithou that I cannot convert currencies.")
+            return
+        }
+
+        if currencies.count == 0 {
+            delegate?.showNoReachableMessage()
             return
         }
 

@@ -11,6 +11,7 @@
 		6F01280B2361D9E700ADCFBE /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01280A2361D9E700ADCFBE /* UIImageView.swift */; };
 		6F01280F2362393E00ADCFBE /* FixerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F01280D236238A500ADCFBE /* FixerTest.swift */; };
 		6F01281523624DDF00ADCFBE /* fixerResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F01281423624DDF00ADCFBE /* fixerResponse.json */; };
+		6F0128172362CC7C00ADCFBE /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0128162362CC7B00ADCFBE /* UITableView.swift */; };
 		6F24BACC235DE16D006A3692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24BACB235DE16D006A3692 /* AppDelegate.swift */; };
 		6F24BACE235DE16D006A3692 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24BACD235DE16D006A3692 /* SceneDelegate.swift */; };
 		6F24BAD0235DE16D006A3692 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F24BACF235DE16D006A3692 /* ContentView.swift */; };
@@ -77,6 +78,7 @@
 		6F01280A2361D9E700ADCFBE /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		6F01280D236238A500ADCFBE /* FixerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixerTest.swift; sourceTree = "<group>"; };
 		6F01281423624DDF00ADCFBE /* fixerResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fixerResponse.json; sourceTree = "<group>"; };
+		6F0128162362CC7B00ADCFBE /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		6F24BAC8235DE16D006A3692 /* Currency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F24BACB235DE16D006A3692 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F24BACD235DE16D006A3692 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				6F24BB37235FA3D5006A3692 /* UIViewController.swift */,
 				6F24BB38235FA3D5006A3692 /* ReusableView.swift */,
 				6F01280A2361D9E700ADCFBE /* UIImageView.swift */,
+				6F0128162362CC7B00ADCFBE /* UITableView.swift */,
 			);
 			path = "Utilities+Extensions";
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				6F24BACE235DE16D006A3692 /* SceneDelegate.swift in Sources */,
 				6F24BB3B235FA3D6006A3692 /* ReusableView.swift in Sources */,
 				6F24BB24235F4D7A006A3692 /* HomeViewModel.swift in Sources */,
+				6F0128172362CC7C00ADCFBE /* UITableView.swift in Sources */,
 				6F24BB4F236095D1006A3692 /* CurrencyCollectionViewCell.swift in Sources */,
 				6F24BB39235FA3D6006A3692 /* UIView.swift in Sources */,
 				6F24BB4823604FCF006A3692 /* AddCurrencyCoordinator.swift in Sources */,

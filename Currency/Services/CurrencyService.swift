@@ -24,7 +24,6 @@ final class CurrencyServiceImpl: CurrencyService {
     func getRates(result: @escaping (FixerResult) -> Void) {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
-
         networking.fetchDecodable(route: FixerRoute.latestRate, decoder: decoder) { (response: FixerResult) in
             switch response {
             case .success(let values):

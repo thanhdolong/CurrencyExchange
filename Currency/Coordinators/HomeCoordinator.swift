@@ -36,7 +36,6 @@ extension HomeCoordinator: HomeViewControllerDelegate {
         let coordinator = AddCurrencyCoordinator(router: router, container: container)
         presentChild(coordinator, animated: true, onDismissed: {
             viewController.homeViewModel.convertCurrency()
-            viewController.homeView.tableView.reloadData()
         })
     }
 }

@@ -98,7 +98,10 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        homeViewModel.numberOfRowsInSection
+        let numberOfRowsInSection = homeViewModel.numberOfRowsInSection
+        homeView.tableView.setEmptyMessageIfNeeded(numberOfRowsInSection: numberOfRowsInSection,
+                                                   "You don't have any curencies yet.\nAdd some currencies and make magic happen.")
+        return numberOfRowsInSection
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,15 +124,24 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 extension HomeViewController: HomeViewModelDelegate {
-    func didRecieveDataUpdate() {
+    private func removeLoadingIndicators() {
         refreshControl.endRefreshing()
         removeIndicator(indicator: homeView.indicator)
+    }
+
+    func showNoReachableMessage() {
+        removeLoadingIndicators()
+        guard homeViewModel.numberOfRowsInSection == 0 else { return }
+        homeView.tableView.setNoReachableMessage()
+    }
+
+    func didRecieveDataUpdate() {
+        removeLoadingIndicators()
         homeView.tableView.reloadData()
     }
 
     func didRecieveError(error: String?) {
-        refreshControl.endRefreshing()
-        removeIndicator(indicator: homeView.indicator)
+        removeLoadingIndicators()
         presentAlertAction(withTitle: "Something went wrong", message: error)
     }
 }

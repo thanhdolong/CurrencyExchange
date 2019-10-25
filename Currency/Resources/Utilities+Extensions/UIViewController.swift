@@ -22,11 +22,12 @@ extension UIViewController {
                 alert.addAction(action)
             }
         } else {
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: handler)
+            let action = UIAlertAction(title: "OK", style: .default, handler: handler)
             alert.addAction(action)
         }
-
-        present(alert, animated: true, completion: nil )
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil )
+        }
     }
 }
 

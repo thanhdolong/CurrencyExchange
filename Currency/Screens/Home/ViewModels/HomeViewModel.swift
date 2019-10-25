@@ -13,7 +13,7 @@ import Kingfisher
 protocol HomeViewModelDelegate: class {
     func didRecieveDataUpdate()
     func didRecieveError(error: String?)
-    func showNoReachableMessage()
+    func didReceiveNoInternetConnection()
 }
 
 final class HomeViewModel {
@@ -105,7 +105,7 @@ final class HomeViewModel {
             }
             case .failure(let error):
                 if self.currencies.count == 0 {
-                    self.delegate?.showNoReachableMessage()
+                    self.delegate?.didReceiveNoInternetConnection()
                 }
 
                 self.delegate?.didRecieveError(error: error.errorDescription)
@@ -132,7 +132,7 @@ final class HomeViewModel {
         }
 
         if currencies.count == 0 {
-            delegate?.showNoReachableMessage()
+            delegate?.didReceiveNoInternetConnection()
             return
         }
 

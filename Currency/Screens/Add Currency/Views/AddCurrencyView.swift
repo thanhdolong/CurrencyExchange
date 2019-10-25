@@ -30,22 +30,25 @@ class AddCurrencyView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.backgroundColor = .clear
-        searchController.searchBar.placeholder = "Search"
-        searchController.searchBar.backgroundImage = UIImage()
         self.backgroundColor = UIColor(named: "BackgroundColor")
-        createSubviews()
+        setupSearchController()
+        createTableViewSubview()
 
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    private func setupSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.backgroundColor = .clear
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.backgroundImage = UIImage()
+    }
 
-    private func createSubviews() {
+    private func createTableViewSubview() {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
 

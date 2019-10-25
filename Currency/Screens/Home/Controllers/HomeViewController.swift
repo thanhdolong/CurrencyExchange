@@ -129,7 +129,7 @@ extension HomeViewController: HomeViewModelDelegate {
         removeIndicator(indicator: homeView.indicator)
     }
 
-    func showNoReachableMessage() {
+    func didReceiveNoInternetConnection() {
         removeLoadingIndicators()
         guard homeViewModel.numberOfRowsInSection == 0 else { return }
         homeView.tableView.setNoReachableMessage()

@@ -7,7 +7,7 @@ target 'Currency' do
   pod 'Swinject', '2.7.1'
   pod 'Kingfisher', '5.9.0'
   pod 'SnapKit', '5.0.1'
-  pod 'Alamofire', '5.0.0-rc.2'
+  pod 'Alamofire', '5.0.0-rc.3'
   pod 'SwiftLint', '0.35'
 
   target 'CurrencyTests' do

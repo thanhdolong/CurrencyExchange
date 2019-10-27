@@ -100,6 +100,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSection = homeViewModel.numberOfRowsInSection
         homeView.tableView.setEmptyMessageIfNeeded(numberOfRowsInSection: numberOfRowsInSection,
+                                                   isFiltering: homeViewModel.isFiltering,
                                                    "You don't have any curencies yet.\nAdd some currencies and make magic happen.")
         return numberOfRowsInSection
     }

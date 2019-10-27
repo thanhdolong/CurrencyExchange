@@ -9,21 +9,20 @@
 import UIKit
 
 extension UITableView {
-    func setEmptyMessageIfNeeded(numberOfRowsInSection: Int, _ message: String) {
+    func setEmptyMessageIfNeeded(numberOfRowsInSection: Int, isFiltering: Bool = false, _ message: String) {
         guard numberOfRowsInSection == 0 else {
             setEmptyBackgroundView()
             return
         }
 
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
-        messageLabel.text = message
+        messageLabel.text = isFiltering ? "No items match your query" : message
         messageLabel.textColor = .systemBlue
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
         messageLabel.sizeToFit()
-
-        self.backgroundView = messageLabel
-        self.separatorStyle = .none
+        backgroundView = messageLabel
+        separatorStyle = .none
     }
 
     func setNoReachableMessage() {
